@@ -1,0 +1,8 @@
+__pycache__/
+.pytest_cache/
+.serverless/
+.venv/
+node_modules/
+*.pyc
+api-s3/evidencias/*.log
+api-s3/evidencias/*.json

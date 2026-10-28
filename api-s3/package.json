@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "sls": "serverless"
+  },
+  "devDependencies": {
+    "serverless": "3.40.0"
+  }
+}

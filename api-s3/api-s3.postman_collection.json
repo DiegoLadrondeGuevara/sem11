@@ -1,0 +1,54 @@
+{
+  "info": {
+    "name": "Semana 11 - API S3",
+    "description": "Cinco operaciones S3. Cambiar baseUrl y bucket por cada stage. La solicitud de archivo usa un texto de ejemplo; para una imagen, sustituir nombre_archivo, tipo_contenido y contenido_base64.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {"key": "baseUrl", "value": "https://ID.execute-api.us-east-1.amazonaws.com/dev"},
+    {"key": "bucket", "value": "sem11-904208419583-dev-ejemplo"},
+    {"key": "directorio", "value": "imagenes-chicas"}
+  ],
+  "item": [
+    {
+      "name": "1. Listar buckets",
+      "request": {"method": "GET", "url": "{{baseUrl}}/s3/lista-buckets"}
+    },
+    {
+      "name": "2. Crear bucket",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {"mode": "raw", "raw": "{\"bucket\":\"{{bucket}}\"}"},
+        "url": "{{baseUrl}}/s3/bucket/crear"
+      }
+    },
+    {
+      "name": "3. Crear directorio",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {"mode": "raw", "raw": "{\"bucket\":\"{{bucket}}\",\"directorio\":\"{{directorio}}\"}"},
+        "url": "{{baseUrl}}/s3/bucket/directorio/crear"
+      }
+    },
+    {
+      "name": "4. Subir archivo de ejemplo",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {"mode": "raw", "raw": "{\"bucket\":\"{{bucket}}\",\"directorio\":\"{{directorio}}\",\"nombre_archivo\":\"semana11.txt\",\"tipo_contenido\":\"text/plain\",\"contenido_base64\":\"c2VtYW5hIDExCg==\"}"},
+        "url": "{{baseUrl}}/s3/bucket/archivo/subir"
+      }
+    },
+    {
+      "name": "5. Listar objetos del bucket",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {"mode": "raw", "raw": "{\"bucket\":\"{{bucket}}\"}"},
+        "url": "{{baseUrl}}/s3/bucket/lista-objetos"
+      }
+    }
+  ]
+}

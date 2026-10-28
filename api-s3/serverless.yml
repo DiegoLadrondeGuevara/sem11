@@ -1,0 +1,69 @@
+org: diegoladrondeguevara
+service: api-s3
+frameworkVersion: '3'
+
+package:
+  patterns:
+    - '!README.md'
+    - '!tests/**'
+    - '!scripts/**'
+    - '!ejemplos/**'
+    - '!evidencias/**'
+    - '!*.postman_collection.json'
+    - '!__pycache__/**'
+    - '!.pytest_cache/**'
+    - '!node_modules/**'
+    - '!package.json'
+    - '!package-lock.json'
+
+provider:
+  name: aws
+  runtime: python3.12
+  region: ${opt:region, 'us-east-1'}
+  stage: ${opt:stage, 'dev'}
+  memorySize: 256
+  timeout: 30
+  iam:
+    role: arn:aws:iam::904208419583:role/LabRole
+
+functions:
+  lista_buckets:
+    handler: lista_buckets.lambda_handler
+    memorySize: 512
+    events:
+      - http:
+          path: s3/lista-buckets
+          method: get
+          cors: true
+
+  lista_objetos_bucket:
+    handler: lista_objetos_bucket.lambda_handler
+    events:
+      - http:
+          path: s3/bucket/lista-objetos
+          method: post
+          cors: true
+
+  crear_bucket:
+    handler: crear_bucket.lambda_handler
+    events:
+      - http:
+          path: s3/bucket/crear
+          method: post
+          cors: true
+
+  crear_directorio:
+    handler: crear_directorio.lambda_handler
+    events:
+      - http:
+          path: s3/bucket/directorio/crear
+          method: post
+          cors: true
+
+  subir_archivo:
+    handler: subir_archivo.lambda_handler
+    events:
+      - http:
+          path: s3/bucket/archivo/subir
+          method: post
+          cors: true
