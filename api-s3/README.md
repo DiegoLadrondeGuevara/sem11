@@ -70,6 +70,8 @@ Importar `api-s3.postman_collection.json` en Postman. Cambiar `baseUrl` y `bucke
 
 También se incluyen tres entornos de Postman en `postman/`, con las URLs reales desplegadas para `dev`, `test` y `prod`. Importar el entorno correspondiente antes de ejecutar la colección. Cada entorno usa un bucket propio con sufijo `pm-9af36eb`, diferente de los buckets usados por `curl`, para que la operación de creación responda `201` en la primera ejecución.
 
+Si se prefieren colecciones independientes, `api-s3-test.postman_collection.json` y `api-s3-prod.postman_collection.json` contienen URLs y buckets fijos. No necesitan seleccionar ningún entorno de Postman. Sus nombres de bucket son distintos de los usados por los entornos anteriores para permitir una primera prueba de creación con respuesta `201`.
+
 ## Evidencias
 
 Guardar las capturas reales de las ejecuciones de CloudShell, Postman y la consola S3 para los tres stages. `evidencias/README.md` contiene la lista. Después reunirlas en un único Word o PDF. Las capturas y el documento final se elaborarán durante la sesión de CloudShell; este repositorio no inventa resultados de AWS.

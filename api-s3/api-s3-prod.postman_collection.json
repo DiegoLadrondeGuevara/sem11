@@ -1,0 +1,84 @@
+{
+  "info": {
+    "name": "Semana 11 - API S3 - prod",
+    "description": "Cinco pruebas S3 para prod. URL y bucket fijos; ejecutar solicitudes 1 a 5 en orden. La carga de archivo usa semana11.txt en base64.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Listar buckets",
+      "request": {
+        "method": "GET",
+        "url": "https://awef0zmrq6.execute-api.us-east-1.amazonaws.com/prod/s3/lista-buckets"
+      }
+    },
+    {
+      "name": "2. Crear bucket",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"bucket\":\"sem11-904208419583-prod-postman-78dff3f\"}"
+        },
+        "url": "https://awef0zmrq6.execute-api.us-east-1.amazonaws.com/prod/s3/bucket/crear"
+      }
+    },
+    {
+      "name": "3. Crear directorio",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"bucket\":\"sem11-904208419583-prod-postman-78dff3f\",\"directorio\":\"imagenes-chicas\"}"
+        },
+        "url": "https://awef0zmrq6.execute-api.us-east-1.amazonaws.com/prod/s3/bucket/directorio/crear"
+      }
+    },
+    {
+      "name": "4. Subir archivo de ejemplo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"bucket\":\"sem11-904208419583-prod-postman-78dff3f\",\"directorio\":\"imagenes-chicas\",\"nombre_archivo\":\"semana11.txt\",\"tipo_contenido\":\"text/plain\",\"contenido_base64\":\"c2VtYW5hIDExCg==\"}"
+        },
+        "url": "https://awef0zmrq6.execute-api.us-east-1.amazonaws.com/prod/s3/bucket/archivo/subir"
+      }
+    },
+    {
+      "name": "5. Listar objetos del bucket",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"bucket\":\"sem11-904208419583-prod-postman-78dff3f\"}"
+        },
+        "url": "https://awef0zmrq6.execute-api.us-east-1.amazonaws.com/prod/s3/bucket/lista-objetos"
+      }
+    }
+  ]
+}
