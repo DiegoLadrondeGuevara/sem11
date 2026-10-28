@@ -5,8 +5,8 @@
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
-    {"key": "baseUrl", "value": "https://ID.execute-api.us-east-1.amazonaws.com/dev"},
-    {"key": "bucket", "value": "sem11-904208419583-dev-ejemplo"},
+    {"key": "baseUrl", "value": "https://rdsdimcsri.execute-api.us-east-1.amazonaws.com/dev"},
+    {"key": "bucket", "value": "sem11-904208419583-dev-pm-9af36eb"},
     {"key": "directorio", "value": "imagenes-chicas"}
   ],
   "item": [

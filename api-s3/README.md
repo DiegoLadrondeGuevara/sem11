@@ -68,6 +68,8 @@ bash scripts/probar_api.sh 'https://ID.execute-api.us-east-1.amazonaws.com/prod'
 
 Importar `api-s3.postman_collection.json` en Postman. Cambiar `baseUrl` y `bucket` al stage que se esté probando. La cuarta solicitud contiene un archivo de texto pequeño; para subir una imagen en Postman, reemplazar los campos del cuerpo con el archivo codificado en base64. El script de Linux ya sube una imagen real.
 
+También se incluyen tres entornos de Postman en `postman/`, con las URLs reales desplegadas para `dev`, `test` y `prod`. Importar el entorno correspondiente antes de ejecutar la colección. Cada entorno usa un bucket propio con sufijo `pm-9af36eb`, diferente de los buckets usados por `curl`, para que la operación de creación responda `201` en la primera ejecución.
+
 ## Evidencias
 
 Guardar las capturas reales de las ejecuciones de CloudShell, Postman y la consola S3 para los tres stages. `evidencias/README.md` contiene la lista. Después reunirlas en un único Word o PDF. Las capturas y el documento final se elaborarán durante la sesión de CloudShell; este repositorio no inventa resultados de AWS.
